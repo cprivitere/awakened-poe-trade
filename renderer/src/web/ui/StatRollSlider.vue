@@ -110,6 +110,7 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" module>
+@reference "../../assets/tailwind.css";
 .tick {
   position: absolute;
   @apply w-0.5;

@@ -75,6 +75,7 @@ function handleClick () {
 </script>
 
 <style lang="postcss" module>
+@reference "../../assets/tailwind.css";
 .cycleBtn {
   @apply p-2;
   display: flex;

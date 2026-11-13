@@ -344,6 +344,7 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" module>
+@reference "../../../assets/tailwind.css";
 .tableHeading {
   @apply sticky top-0;
   @apply bg-gray-800;
@@ -381,8 +382,6 @@ export default defineComponent({
 }
 
 .marketRatioRow {
-  @apply bg-gray-700 !important;
-  outline: 1px solid theme('colors.gray.600');
-  outline-offset: -1px;
+  @apply bg-gray-700! outline outline-gray-600 outline-offset-[-1px];
 }
 </style>

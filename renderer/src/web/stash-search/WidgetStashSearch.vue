@@ -122,6 +122,7 @@ const { t } = useI18n()
 </script>
 
 <style lang="postcss" module>
+@reference "../../assets/tailwind.css";
 .searchBtn {
   flex-shrink: 0;
   @apply rounded;

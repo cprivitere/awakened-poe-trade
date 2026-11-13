@@ -4,6 +4,9 @@
     "module": "node20",
     "strict": true,
     "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "lib": [
+      "es2024"
+    ]
   }
 }

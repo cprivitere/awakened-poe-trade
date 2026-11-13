@@ -18,6 +18,7 @@ const emit = defineEmits<{
 </script>
 
 <style lang="postcss" module>
+@reference "../../assets/tailwind.css";
 .titlebar {
   @apply bg-gray-900 text-gray-600;
   display: flex;

@@ -43,6 +43,7 @@ const { t } = useI18n()
 </script>
 
 <style lang="postcss" module>
+@reference "../../assets/tailwind.css";
 .required {
   font-size: theme('fontSize.lg');
   line-height: 1;

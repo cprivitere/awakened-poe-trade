@@ -9,12 +9,11 @@ import OverlayWindow from './overlay/OverlayWindow.vue'
 </script>
 
 <style lang="postcss">
+@reference "../assets/tailwind.css";
 @import url('@fortawesome/fontawesome-free/css/all.min.css');
 @import url('animate.css/animate.css');
 @import url('../assets/font.css');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "../assets/tailwind.css";
 
 .table-stripped tbody tr:nth-child(odd) {
   background: #353f52;

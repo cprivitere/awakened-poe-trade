@@ -194,6 +194,7 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" module>
+@reference "../../../assets/tailwind.css";
 .presetBtn {
   @apply border-gray-700 bg-gray-800;
   @apply px-2;

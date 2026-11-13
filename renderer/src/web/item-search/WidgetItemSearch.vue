@@ -312,6 +312,7 @@ function selectedItemClick (e: MouseEvent, item: SelectedItem) {
 </script>
 
 <style lang="postcss" module>
+@reference "../../assets/tailwind.css";
 .searchItem {
   display: flex;
   padding-left: theme('spacing.1');
@@ -388,9 +389,9 @@ function selectedItemClick (e: MouseEvent, item: SelectedItem) {
 }
 
 @keyframes selectedItemEnter {
-  0% { @apply bg-transparent; }
-  50% { @apply bg-gray-700; }
-  100% { @apply bg-transparent; }
+  0% { background-color: transparent; }
+  50% { background-color: theme('colors.gray.700'); }
+  100% { background-color: transparent; }
 }
 .selectedItemEnter {
   animation: selectedItemEnter 0.8s linear;

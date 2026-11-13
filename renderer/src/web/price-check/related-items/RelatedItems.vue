@@ -115,6 +115,7 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" module>
+@reference "../../../assets/tailwind.css";
 .wrapper {
   display: flex;
   @apply bg-gray-800 text-gray-400 mt-6;

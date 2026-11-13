@@ -61,6 +61,7 @@ const itemName = computed(() => props.item.info.name)
 </script>
 
 <style lang="postcss" module>
+@reference "../../assets/tailwind.css";
 .widget {
   display: flex;
   flex-direction: column;

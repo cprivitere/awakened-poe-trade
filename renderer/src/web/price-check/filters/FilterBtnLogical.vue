@@ -36,6 +36,7 @@ function toggle () {
 </script>
 
 <style lang="postcss" module>
+@reference "../../../assets/tailwind.css";
 .btn {
   @apply bg-gray-900 rounded;
   @apply border border-transparent;

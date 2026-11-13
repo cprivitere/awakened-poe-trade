@@ -87,6 +87,7 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" module>
+@reference "../../assets/tailwind.css";
 .row {
   display: flex;
   align-items: center;

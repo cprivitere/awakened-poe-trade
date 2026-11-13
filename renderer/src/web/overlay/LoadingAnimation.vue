@@ -32,6 +32,7 @@ Host.onEvent('MAIN->OVERLAY::overlay-attached', () => {
 </script>
 
 <style lang="postcss" module>
+@reference "../../assets/tailwind.css";
 .widget {
   position: absolute;
   display: flex;

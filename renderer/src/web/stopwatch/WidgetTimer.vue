@@ -126,6 +126,7 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" module>
+@reference "../../assets/tailwind.css";
 .timer {
   font-size: 2rem;
   line-height: 1;

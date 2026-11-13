@@ -166,6 +166,7 @@ function deltaFromGraph (graphPoints: Array<number | null>) {
 </script>
 
 <style lang="postcss" module>
+@reference "../../../assets/tailwind.css";
 .trend-btn {
   display: flex;
   align-items: center;

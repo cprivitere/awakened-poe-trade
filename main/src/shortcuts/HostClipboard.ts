@@ -33,57 +33,76 @@ export class HostClipboard {
       return await this.pollPromise
     }
 
-    let textBefore = clipboard.readText()
+    let textBefore = await clipboard.readText()
     if (isPoeItem(textBefore)) {
       textBefore = ''
       if (process.platform !== 'linux') {
-        clipboard.writeText('')
+        await clipboard.writeText('')
       } else {
         // workaround KDE's "Prevent empty clipboard" feature
         // see https://github.com/SnosMe/awakened-poe-trade/issues/1790#issuecomment-4062830614
-        clipboard.writeText(`__APT_FORCE_EMPTY_${Date.now()}`)
+        await clipboard.writeText(`__APT_FORCE_EMPTY_${Date.now()}`)
       }
     } else if (process.platform === 'linux') {
       // workaround bug in Proton 10+ https://github.com/SnosMe/awakened-poe-trade/issues/1846
-      clipboard.writeText(`__APT_FORCE_EMPTY_${Date.now()}`)
+      await clipboard.writeText(`__APT_FORCE_EMPTY_${Date.now()}`)
     }
 
-    this.pollPromise = new Promise((resolve, reject) => {
-      const poll = () => {
-        const textAfter = clipboard.readText()
+    const { promise, resolve, reject } = Promise.withResolvers<string>()
+    this.pollPromise = promise
+    const poll = async (): Promise<void> => {
+      let textAfter: string
+      try {
+        textAfter = await clipboard.readText()
+      } catch (err) {
+        this.pollPromise = undefined
+        reject(err)
+        return
+      }
 
-        if (isPoeItem(textAfter)) {
+      if (isPoeItem(textAfter)) {
+        try {
           if (this.shouldRestore) {
-            clipboard.writeText(textBefore)
+            await clipboard.writeText(textBefore)
+          }
+        } catch (err) {
+          this.pollPromise = undefined
+          reject(err)
+          return
+        }
+        this.pollPromise = undefined
+        resolve(textAfter)
+      } else {
+        this.elapsed += POLL_DELAY
+        if (this.elapsed < POLL_LIMIT) {
+          setTimeout(poll, POLL_DELAY)
+        } else {
+          try {
+            if (this.shouldRestore) {
+              await clipboard.writeText(textBefore)
+            }
+          } catch (err) {
+            this.pollPromise = undefined
+            reject(err)
+            return
           }
           this.pollPromise = undefined
-          resolve(textAfter)
-        } else {
-          this.elapsed += POLL_DELAY
-          if (this.elapsed < POLL_LIMIT) {
-            setTimeout(poll, POLL_DELAY)
-          } else {
-            if (this.shouldRestore) {
-              clipboard.writeText(textBefore)
-            }
-            this.pollPromise = undefined
 
-            if (!isPoeItem(textAfter)) {
-              this.logger.write('warn [ClipboardPoller] No item text found.')
-            }
-            reject(new Error('Reading clipboard timed out'))
+          if (!isPoeItem(textAfter)) {
+            this.logger.write('warn [ClipboardPoller] No item text found.')
           }
+          reject(new Error('Reading clipboard timed out'))
         }
       }
-      setTimeout(poll, POLL_DELAY)
-    })
+    }
+    setTimeout(poll, POLL_DELAY)
 
-    return this.pollPromise
+    return promise
   }
 
   // when `shouldRestore` is false, this function continues
   // to work as a throttler for callback
-  restoreShortly (cb: (clipboard: Clipboard) => void) {
+  async restoreShortly (cb: (clipboard: Clipboard) => void | Promise<void>): Promise<void> {
     // Not only do we not overwrite the clipboard, but we don't exec callback.
     // This throttling helps against disconnects from "Too many actions".
     if (!this.isRestored) {
@@ -91,13 +110,18 @@ export class HostClipboard {
     }
 
     this.isRestored = false
-    const saved = clipboard.readText()
-    cb(clipboard)
-    setTimeout(() => {
-      if (this.shouldRestore) {
-        clipboard.writeText(saved)
+    const saved = await clipboard.readText()
+    await cb(clipboard)
+    setTimeout(async () => {
+      try {
+        if (this.shouldRestore) {
+          await clipboard.writeText(saved)
+        }
+      } catch (err) {
+        this.logger.write(`warn [Clipboard] Restore failed: ${err instanceof Error ? err.message : String(err)}`)
+      } finally {
+        this.isRestored = true
       }
-      this.isRestored = true
     }, RESTORE_AFTER)
   }
 }

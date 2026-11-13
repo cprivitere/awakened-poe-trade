@@ -114,6 +114,7 @@ function remove (id: number) {
 </script>
 
 <style lang="postcss" module>
+@reference "../../assets/tailwind.css";
 .card {
   width: 12rem;
   height: 6.5rem;

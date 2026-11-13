@@ -42,8 +42,7 @@ const route = useRoute()
 
 <style lang="postcss">
 @import url('./style.css');
-@tailwind base;
-@tailwind utilities;
+@import "./tailwind.css";
 
 #site-logo img {
   width: 52px;

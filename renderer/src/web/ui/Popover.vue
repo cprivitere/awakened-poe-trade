@@ -85,6 +85,7 @@ export default defineComponent({
 </script>
 
 <style lang="postcss">
+@reference "../../assets/tailwind.css";
 .tippy-box {
   @apply rounded;
 }

@@ -252,6 +252,7 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" module>
+@reference "../../assets/tailwind.css";
 .widget {
   position: absolute;
   display: flex;
@@ -319,6 +320,7 @@ export default defineComponent({
 </style>
 
 <style lang="postcss">
+@reference "../../assets/tailwind.css";
 .widget-default-style {
   @apply rounded;
   @apply bg-gray-900;

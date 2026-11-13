@@ -230,6 +230,7 @@ function flatJoin<T, J> (arr: T[][], joinEl: () => J) {
 </script>
 
 <style lang="postcss" module>
+@reference "../../assets/tailwind.css";
 .window {
   position: absolute;
   top: 0; bottom: 0; left: 0; right: 0;

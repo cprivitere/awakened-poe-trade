@@ -22,18 +22,18 @@
   },
   "devDependencies": {
     "@types/ini": "^4.1.1",
-    "@types/node": "^24.12.2",
-    "@types/ws": "^8.18.1",
+    "@types/node": "^26.6.6",
+    "@types/ws": "^8.18.2",
     "@wokwi/bmp-ts": "^3.0.0",
     "comlink": "^4.4.2",
-    "electron": "^40.10.6",
-    "electron-builder": "^26.9.0",
-    "electron-updater": "^6.8.3",
-    "esbuild": "^0.28.0",
-    "ini": "^6.0.0",
+    "electron": "^45.3.2",
+    "electron-builder": "^26.18.0",
+    "electron-updater": "^6.8.11",
+    "esbuild": "^0.28.2",
+    "ini": "^7.0.0",
     "patch-package": "^8.0.1",
-    "typescript": "^6.0.2",
-    "ws": "^8.20.0"
+    "typescript": "^6.0.3",
+    "ws": "^8.23.0"
   },
   "allowScripts": {
     "electron": true

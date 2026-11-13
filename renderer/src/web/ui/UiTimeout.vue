@@ -47,6 +47,7 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" module>
+@reference "../../assets/tailwind.css";
 .bar {
   @apply bg-gray-800 rounded w-64 h-1;
   position: relative;

@@ -68,6 +68,7 @@ const resolvedSrc = computed(() => {
 </script>
 
 <style lang="postcss" module>
+@reference "../../assets/tailwind.css";
 .img {
   width: 100%;
   height: 100%;

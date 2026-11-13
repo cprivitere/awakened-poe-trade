@@ -266,6 +266,7 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" module>
+@reference "../../assets/tailwind.css";
 .complexityHint {
   display: flex;
   align-items: baseline;

@@ -105,6 +105,7 @@ const profiles = computed(() => {
 </script>
 
 <style lang="postcss" module>
+@reference "../../assets/tailwind.css";
 .screenshot {
   aspect-ratio: 21 / 9;
   background: theme('colors.gray.700');

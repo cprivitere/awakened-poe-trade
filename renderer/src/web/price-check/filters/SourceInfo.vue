@@ -80,6 +80,7 @@ const stats = computed(() => {
 </script>
 
 <style lang="postcss" module>
+@reference "../../../assets/tailwind.css";
 .modinfo {
   @apply text-gray-500;
   font-style: italic;

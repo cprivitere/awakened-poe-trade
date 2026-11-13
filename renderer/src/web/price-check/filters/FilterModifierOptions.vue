@@ -39,6 +39,7 @@ function handleOptionClick (e: MouseEvent, value: number) {
 </script>
 
 <style lang="postcss" module>
+@reference "../../../assets/tailwind.css";
 .rollOptions {
   display: flex;
   align-items: baseline;

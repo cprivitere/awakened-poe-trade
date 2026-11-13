@@ -88,6 +88,7 @@ export default defineComponent({
 </script>
 
 <style lang="postcss">
+@reference "../../../assets/tailwind.css";
 .filter-name {
   @apply bg-gray-900 mb-2 rounded;
   line-height: 1.25rem;

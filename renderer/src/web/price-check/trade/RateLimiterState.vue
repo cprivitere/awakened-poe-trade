@@ -67,6 +67,7 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" module>
+@reference "../../../assets/tailwind.css";
 .button {
   @apply mx-6 px-4;
   @apply bg-gray-900 text-gray-600;

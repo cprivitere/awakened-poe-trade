@@ -19,6 +19,7 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" module>
+@reference "../../assets/tailwind.css";
 .box {
   @apply border border-red-400;
   @apply rounded;
